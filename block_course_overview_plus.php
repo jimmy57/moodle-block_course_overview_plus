@@ -58,7 +58,7 @@ class block_course_overview_plus extends block_base {
         $recentexpand=$expandcourseinfo;
     }
 
-    if ($contract != 0) {
+    if (isset($contract) && $contract != 0) {
         set_user_preference('courseoverviewpluscontract'.$contract, 1, $USER->id); 
         $recentcontract=$contractcourseinfo;
     }
@@ -85,7 +85,7 @@ class block_course_overview_plus extends block_base {
     $site = get_site();
     $course = $site; //just in case we need the old global $course hack
 
-    if (is_enabled_auth('mnet')) {
+	if (is_enabled_auth('mnet')) {
         $remote_courses = get_my_remotecourses();
     }
 
@@ -106,14 +106,15 @@ class block_course_overview_plus extends block_base {
         if (array_key_exists($site->id,$courses)) {
             unset($courses[$site->id]);
         }
+		
         $collapsible = ' ';
-	$courseslist = ' ';
+		$courseslist = ' ';
          
         echo '<style type="text/css">';
         echo '.hidden {display:none;}';
         echo '</style>';
-
-        if (empty($courses)) {
+		
+		if (empty($courses)) {
             $content[] = get_string('nocourses','my');
         } else {
             ob_start();
@@ -130,7 +131,8 @@ class block_course_overview_plus extends block_base {
                 }
             }
         }
-        $hidden = 0;
+		
+		$hidden = 0;
         foreach ($courses as $c) {
             user_preference_allow_ajax_update('courseoverviewplushide'.$c->id, PARAM_INT);
             user_preference_allow_ajax_update('courseoverviewpluscontract'.$c->id, PARAM_INT);
@@ -164,8 +166,11 @@ class block_course_overview_plus extends block_base {
             $courses[$c->id]->infohide = $contractthiscourse;
         }
 
+    
         if ($managehiddencourses == 0) {
-            echo get_string('youhave', 'block_course_overview_plus').' <span id="hiddencourses" style="color:darkred;">'.$hidden.'</span> '.get_string('hiddencourses', 'block_course_overview_plus').' | <a href="index.php?managehiddencourses=1">'.get_string('managehiddencourses', 'block_course_overview_plus').'</a>';
+            echo get_string('youhave', 'block_course_overview_plus').' <span id="hiddencourses" style="color:darkred;">'.$hidden.'</span> '.get_string(
+'hiddencourses', 'block_course_overview_plus').' | <a href="index.php?managehiddencourses=1">'.get_string('managehiddencourses', 
+'block_course_overview_plus').'</a>';
         } else {
             echo  ' <a href="index.php">'.get_string('stopmanaginghiddencourses', 'block_course_overview_plus').'</a>';
         }
@@ -187,17 +192,23 @@ class block_course_overview_plus extends block_base {
            if($c->hide==0) {
                echo $OUTPUT->heading(html_writer::link(
                    new moodle_url('/course/view.php', array('id' => $c->id)), format_string($c->fullname), $attributes).
-                       ' <div style="text-align: right;"><a href="index.php?hidecourse='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" id="hider'.$c->id.'" title="'.get_string('hidecourse', 'block_course_overview_plus').'">'.
+                       ' <div style="text-align: right;"><a href="index.php?hidecourse='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" id="hider'.$c->
+id.'" title="'.get_string('hidecourse', 'block_course_overview_plus').'">'.
                        '<img src="'.$OUTPUT->pix_url('i/hide') . '" class="icon" alt="'.get_string('hidecourse', 'block_course_overview_plus').'" /></a>'.
-                       '<a href="index.php?showcourse='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" id="shower'.$c->id.'" class="hidden" title="'.get_string('showcourse', 'block_course_overview_plus').'">'.
-                       '<img src="'.$OUTPUT->pix_url('i/show') . '" class="icon" alt="'.get_string('showcourse', 'block_course_overview_plus').'" /></a><br /></div>', 3);
+                       '<a href="index.php?showcourse='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" id="shower'.$c->id.'" class="hidden" title="'.
+get_string('showcourse', 'block_course_overview_plus').'">'.
+                       '<img src="'.$OUTPUT->pix_url('i/show') . '" class="icon" alt="'.get_string('showcourse', 'block_course_overview_plus').'" /></a><br 
+/></div>', 3);
            } else {
                echo $OUTPUT->heading(html_writer::link(
                    new moodle_url('/course/view.php', array('id' => $c->id)), format_string($c->fullname), $attributes).
-                       ' <div style="text-align: right;"><a href="index.php?hidecourse='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" id="hider'.$c->id.'" class="hidden" title="'.get_string('hidecourse', 'block_course_overview_plus').'">'.
+                       ' <div style="text-align: right;"><a href="index.php?hidecourse='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" id="hider'.$c->
+id.'" class="hidden" title="'.get_string('hidecourse', 'block_course_overview_plus').'">'.
                        '<img src="'.$OUTPUT->pix_url('i/hide') . '" class="icon" alt="'.get_string('hidecourse', 'block_course_overview_plus').'" /></a>'.
-                       '<a href="index.php?showcourse='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" id="shower'.$c->id.'" title="'.get_string('showcourse', 'block_course_overview_plus').'">'.
-                       '<img src="'.$OUTPUT->pix_url('i/show') . '" class="icon" alt="'.get_string('showcourse', 'block_course_overview_plus').'" /></a><br /></div>', 3);
+                       '<a href="index.php?showcourse='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" id="shower'.$c->id.'" title="'.get_string(
+'showcourse', 'block_course_overview_plus').'">'.
+                       '<img src="'.$OUTPUT->pix_url('i/show') . '" class="icon" alt="'.get_string('showcourse', 'block_course_overview_plus').'" /></a><br 
+/></div>', 3);
            }
 
 
@@ -214,15 +225,21 @@ class block_course_overview_plus extends block_base {
               echo '</div>';
 
           if ($c->infohide == 0) {
-              echo ' <div style="text-align: right;"><a href="index.php?contractcourseinfo='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" id="contract'.$c->id.'" title="'.get_string('collapsecourseinfo', 'block_course_overview_plus').'">'.
+              echo ' <div style="text-align: right;"><a href="index.php?contractcourseinfo='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" 
+id="contract'.$c->id.'" title="'.get_string('collapsecourseinfo', 'block_course_overview_plus').'">'.
                      '<img src="'.$OUTPUT->pix_url('i/contract') . '" class="icon" alt="'.get_string('collapsecourseinfo', 'block_course_overview_plus').'" /></a>'.
-                     '<a href="index.php?expandcourseinfo='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" id="expand'.$c->id.'" class="hidden" title="'.get_string('expandcourseinfo', 'block_course_overview_plus').'">'.
-                     '<img src="'.$OUTPUT->pix_url('i/expand') . '" class="icon" alt="'.get_string('expandcourseinfo', 'block_course_overview_plus').'" /></a></div>';
+                     '<a href="index.php?expandcourseinfo='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" id="expand'.$c->id.'" class="hidden" 
+title="'.get_string('expandcourseinfo', 'block_course_overview_plus').'">'.
+                     '<img src="'.$OUTPUT->pix_url('i/expand') . '" class="icon" alt="'.get_string('expandcourseinfo', 'block_course_overview_plus').'" 
+/></a></div>';
           } else {
-              echo ' <div style="text-align: right;"><a href="index.php?contractcourseinfo='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" title="'.get_string('collapsecourseinfo', 'block_course_overview_plus').'"  id="contract'.$c->id.'" class="hidden" >'.
+              echo ' <div style="text-align: right;"><a href="index.php?contractcourseinfo='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" title="'.
+get_string('collapsecourseinfo', 'block_course_overview_plus').'"  id="contract'.$c->id.'" class="hidden" >'.
                      '<img src="'.$OUTPUT->pix_url('i/contract') . '" class="icon" alt="'.get_string('collapsecourseinfo', 'block_course_overview_plus').'" /></a>'.
-                     '<a href="index.php?expandcourseinfo='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" title="'.get_string('expandcourseinfo', 'block_course_overview_plus').'" id="expand'.$c->id.'" >'.
-                     '<img src="'.$OUTPUT->pix_url('i/expand') . '" alt="'.get_string('expandcourseinfo', 'block_course_overview_plus').'" class="icon"/></a></div>';
+                     '<a href="index.php?expandcourseinfo='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" title="'.get_string('expandcourseinfo', 
+'block_course_overview_plus').'" id="expand'.$c->id.'" >'.
+                     '<img src="'.$OUTPUT->pix_url('i/expand') . '" alt="'.get_string('expandcourseinfo', 'block_course_overview_plus').'" 
+class="icon"/></a></div>';
           }
      }
       echo $OUTPUT->box_end();
@@ -240,7 +257,8 @@ if ($morecourses) {
 $this->content->text = implode($content);
 
 $PAGE->requires->yui_module('moodle-block_course_overview_plus-collapse', 'M.block_course_overview_plus.initCollapse', array(array('courses'=>trim($collapsible))));
-$PAGE->requires->yui_module('moodle-block_course_overview_plus-hide', 'M.block_course_overview_plus.initHide', array(array('courses'=>trim($courseslist),'editing'=>$managehiddencourses)));
+$PAGE->requires->yui_module('moodle-block_course_overview_plus-hide', 'M.block_course_overview_plus.initHide', array(array('courses'=>trim($courseslist),'editing'
+=>$managehiddencourses)));
 
         return $this->content;
     }

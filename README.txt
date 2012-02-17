@@ -10,11 +10,8 @@ To replace the standard course_overview block
 2. Add the Course Overview Plus block.
 3. This is unlikely to appear in the correct place, move the block to the second slot down in the main column.
 
-Problems?
---------
+Modification note
+-----------------
 
-You can email me at a.james@yorksj.ac.uk
-
-I am also able to extend the block to allow filtering of the course list (http://moodle.org/mod/forum/discuss.php?d=184870&parent=805019) 
-or provide help for developers who wish to do this.
-
+This repository is a fork maintained by Olexandr Savchuk for the Lernportal Informatik, a Moodle installation at the TU Darmstadt Computer Science department.
+Main difference from the upstream is a German translation, as well as minor code modifications.
