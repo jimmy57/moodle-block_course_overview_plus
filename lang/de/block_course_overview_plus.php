@@ -7,4 +7,4 @@ $string['showcourse'] = 'Kurs verbergen';
 $string['youhave'] = 'Sie haben';
 $string['hiddencourses'] = 'verborgene Kurse';
 $string['managehiddencourses'] = 'Verborgene Kurse verwalten';
-$string['stopmanaginghiddencourses'] = 'Verwaltung beenden';
+$string['stopmanaginghiddencourses'] = 'Verwaltung der verborgenen Kurse beenden';
