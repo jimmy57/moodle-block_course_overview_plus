@@ -58,7 +58,7 @@ class block_course_overview_plus extends block_base {
         $recentexpand=$expandcourseinfo;
     }
 
-    if ($contract != 0) {
+    if ($contractcourseinfo != 0) {
         set_user_preference('courseoverviewpluscontract'.$contract, 1, $USER->id); 
         $recentcontract=$contractcourseinfo;
     }
