@@ -1,7 +1,7 @@
 <?php
 
 
-$plugin->version = 2012021800;
+$plugin->version = 2012031200;
 $plugin->requires = 2010112400;
 $plugin->cron = 0;
 $plugin->component = 'block_course_overview_plus';
