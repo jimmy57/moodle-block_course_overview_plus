@@ -25,10 +25,10 @@ for(i=0; i<courses.length; i++){
     hideCourse : function(e, course, editing) {
         // Prevent the event from refreshing the page
         e.preventDefault();
-        Y.one('#hider'+course).addClass('hidden');
-        Y.one('#shower'+course).removeClass('hidden');
+        Y.one('#hider'+course).addClass('cophidden');
+        Y.one('#shower'+course).removeClass('cophidden');
         if (editing==0) { 
-        Y.one('#course'+course).addClass('hidden');
+        Y.one('#course'+course).addClass('cophidden');
         Y.one('#hiddencourses').setContent(parseInt(Y.one('#hiddencourses').get("innerHTML"))+1);
         }
         M.util.set_user_preference('courseoverviewplushide'+course, 1);
@@ -36,9 +36,9 @@ for(i=0; i<courses.length; i++){
     showCourse : function(e, course, editing) {
         // Prevent the event from refreshing the page
         e.preventDefault();
-        Y.one('#shower'+course).addClass('hidden');
-        Y.one('#hider'+course).removeClass('hidden');
-        Y.one('#course'+course).removeClass('hidden');
+        Y.one('#shower'+course).addClass('cophidden');
+        Y.one('#hider'+course).removeClass('cophidden');
+        Y.one('#course'+course).removeClass('cophidden');
 
         M.util.set_user_preference('courseoverviewplushide'+course, 0);
     }

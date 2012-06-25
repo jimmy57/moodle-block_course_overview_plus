@@ -25,18 +25,18 @@ for(i=0; i<courses.length; i++){
     collapseCourse : function(e, course) {
         // Prevent the event from refreshing the page
         e.preventDefault();
-        Y.one('#extra'+course).addClass('hidden');
-        Y.one('#contract'+course).addClass('hidden');
-        Y.one('#expand'+course).removeClass('hidden');
+        Y.one('#extra'+course).addClass('cophidden');
+        Y.one('#contract'+course).addClass('cophidden');
+        Y.one('#expand'+course).removeClass('cophidden');
 
         M.util.set_user_preference('courseoverviewpluscontract'+course, 1);
     },
     expandCourse : function(e, course) {
         // Prevent the event from refreshing the page
         e.preventDefault();
-        Y.one('#extra'+course).removeClass('hidden');
-        Y.one('#contract'+course).removeClass('hidden');
-        Y.one('#expand'+course).addClass('hidden');
+        Y.one('#extra'+course).removeClass('cophidden');
+        Y.one('#contract'+course).removeClass('cophidden');
+        Y.one('#expand'+course).addClass('cophidden');
 
         M.util.set_user_preference('courseoverviewpluscontract'+course, 0);
     }
