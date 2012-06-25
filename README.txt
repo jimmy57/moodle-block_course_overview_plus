@@ -23,3 +23,5 @@ Release Notes
 
 2012031200	Fixed misnnamed variable ($contract) causing PHP warning
 		Added German translation and tidier code from Olexs's fork	
+2012032000	French translation
+2012062500	Course filters added
