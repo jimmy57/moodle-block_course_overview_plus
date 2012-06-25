@@ -137,6 +137,13 @@ class block_course_overview_plus extends block_base {
   //      echo '<style type="text/css">';
   //      echo '.hidden {display:none;}';
   //      echo '</style>';
+        foreach ($courses as $c) {
+            if (isset($USER->lastcourseaccess[$c->id])) {
+                $courses[$c->id]->lastaccess = $USER->lastcourseaccess[$c->id];
+            } else {
+                $courses[$c->id]->lastaccess = 0;
+            }
+        }
 		
 		if (empty($courses)) {
             $content[] = get_string('nocourses','my');
