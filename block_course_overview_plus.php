@@ -238,7 +238,7 @@ class block_course_overview_plus extends block_base {
             } 
             echo '</td><td rowspan=2><input type="image" alt="'.get_string('clicktofilter', 'block_course_overview_plus').'" src="'.$OUTPUT->pix_url('i/course_filter').'"/></td></tr><tr>';
             if($this->config->yearcoursefilter) {
-                echo '<td><select name="year" id="filterYear" style="width: 110px">';
+                echo '<td><select name="year" id="filterYear">';
                 sort($years);
                 if($currentyear == 'all') {
                     echo '<option value="all" selected>'.get_string('all', 'block_course_overview_plus').'</option> ';
@@ -263,7 +263,7 @@ class block_course_overview_plus extends block_base {
                echo '</select></td>';
             }
             if($this->config->categorycoursefilter) {
-                echo '<td><select name="category" id="filterCategory" style="width: 300px">';
+                echo '<td><select name="category" id="filterCategory">';
                 sort($categories);
                 if($currentcategory == 'all') {
                     echo '<option value="all" selected>'.get_string('all', 'block_course_overview_plus').'</option> ';
@@ -280,7 +280,7 @@ class block_course_overview_plus extends block_base {
                echo '</select></td>';
             }
             if($this->config->teachercoursefilter) {
-                echo '<td><select name="teacher" id="filterTeacher" style="width: 200px">';
+                echo '<td><select name="teacher" id="filterTeacher">';
                 asort($teachers);
                 if($currentteacher == 'all') {
                     echo '<option value="all" selected>'.get_string('all', 'block_course_overview_plus').'</option> ';
