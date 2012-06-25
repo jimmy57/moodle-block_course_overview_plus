@@ -13,9 +13,9 @@ To replace the standard course_overview block
 Problems?
 --------
 
-You can email me at a.james@yorksj.ac.uk
+You can email me at der_andrew_james@yahoo.co.uk
 
-I am also able to extend the block to allow filtering of the course list (http://moodle.org/mod/forum/discuss.php?d=184870&parent=805019) 
+As well as the example course filters included in the block, I am also able to extend the block to allow filtering of the course list by other criteria (http://moodle.org/mod/forum/discuss.php?d=184870&parent=805019) 
 or provide help for developers who wish to do this.
 
 Release Notes
@@ -25,3 +25,4 @@ Release Notes
 		Added German translation and tidier code from Olexs's fork	
 2012032000	French translation
 2012062500	Course filters added
+2012062501	Forum issue fixed
