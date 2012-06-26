@@ -20,7 +20,17 @@ class block_course_overview_plus extends block_base {
     public function init() {
         $this->title   = get_string('pluginname', 'block_course_overview_plus');
     }
-
+    public function specialization() {
+        if (empty($this->config->yearcoursefilter)) {
+            $this->config->yearcoursefilter = false;
+        }
+        if (empty($this->config->categorycoursefilter)) {
+            $this->config->categorycoursefilter = false;
+        }    
+        if (empty($this->config->teachercoursefilter)) {
+            $this->config->teachercoursefilter = false;
+        }
+    }
     /**
      * block contents
      *
@@ -87,6 +97,7 @@ class block_course_overview_plus extends block_base {
     } else {
         $currentteacher = get_user_preferences('courseoverviewplusselectedteacher', 'all');
    }
+
     $this->content = new stdClass();
     $this->content->text = '';
     $this->content->footer = '';

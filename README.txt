@@ -10,6 +10,13 @@ To replace the standard course_overview block
 2. Add the Course Overview Plus block.
 3. This is unlikely to appear in the correct place, move the block to the second slot down in the main column.
 
+To add the example course filters
+---------------------------------
+
+1. Select 'customise this page' in My Moodle.
+2. Select the configuration button at the top of the Course Overview Plus block.
+3. Tick the checkboxes to display each course filter at the top of the block, you can display more than one at once.
+
 Problems?
 --------
 
@@ -26,3 +33,4 @@ Release Notes
 2012032000	French translation
 2012062500	Course filters added
 2012062501	Forum issue fixed
+2012062600	Specialization method added
