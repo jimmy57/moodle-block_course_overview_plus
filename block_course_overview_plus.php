@@ -290,7 +290,7 @@ class block_course_overview_plus extends block_base {
                     echo '<option value="all">'.get_string('all', 'block_course_overview_plus').'</option> ';
                 }
                 foreach ($categories as $cy) {
-                    if($currentcategory == $cy) {
+                    if($currentcategory == str_replace(' ','_',$cy)) {
                            echo '<option selected value="'.str_replace(' ','_',$cy).'">'.$cy.'</option> ';
                     } else {
                            echo '<option value="'.str_replace(' ','_',$cy).'">'.$cy.'</option> ';
@@ -345,7 +345,7 @@ class block_course_overview_plus extends block_base {
             }
 
         if($this->config->categorycoursefilter) {
-                if($c->category == $currentcategory||$currentcategory=='all')    {
+                if(str_replace(' ', '_', $c->categoryname) == $currentcategory||$currentcategory=='all')    {
                      echo '<div class="categorydiv copcategory'.str_replace(' ', '_', $c->categoryname).'">';
                 } else {
                      echo '<div class="categorydiv copcategory'.str_replace(' ', '_', $c->categoryname).' cophidden">';
