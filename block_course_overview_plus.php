@@ -300,7 +300,7 @@ class block_course_overview_plus extends block_base {
             }
             echo '</td><td>';
             if($this->config->teachercoursefilter) {
-                echo '<td><select name="teacher" id="filterTeacher">';
+                echo '<select name="teacher" id="filterTeacher">';
                 asort($teachers);
                 if($currentteacher == 'all') {
                     echo '<option value="all" selected>'.get_string('all', 'block_course_overview_plus').'</option> ';
