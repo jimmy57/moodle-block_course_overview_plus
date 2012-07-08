@@ -477,7 +477,7 @@ $PAGE->requires->yui_module('moodle-block_course_overview_plus-hide', 'M.block_c
      * @return array
      */
     public function applicable_formats() {
-        return array('my-index'=>true);
+        return array('my-index'=>true,'site-index'=>true);
     }
 }
 ?>
