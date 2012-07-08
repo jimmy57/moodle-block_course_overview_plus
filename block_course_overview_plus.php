@@ -254,9 +254,9 @@ class block_course_overview_plus extends block_base {
             if($this->config->teachercoursefilter) {
                 echo get_string('teacher', 'block_course_overview_plus');
             } 
-            echo '</td><td rowspan=2><input type="image" alt="'.get_string('clicktofilter', 'block_course_overview_plus').'" src="'.$OUTPUT->pix_url('i/course_filter').'"/></td></tr><tr>';
+            echo '</td><td rowspan=2><input type="image" alt="'.get_string('clicktofilter', 'block_course_overview_plus').'" src="'.$OUTPUT->pix_url('i/course_filter').'"/></td></tr><tr><td>';
             if($this->config->yearcoursefilter) {
-                echo '<td><select name="year" id="filterYear">';
+                echo '<select name="year" id="filterYear">';
                 sort($years);
                 if($currentyear == 'all') {
                     echo '<option value="all" selected>'.get_string('all', 'block_course_overview_plus').'</option> ';
@@ -278,10 +278,11 @@ class block_course_overview_plus extends block_base {
                        }
                     }
                }
-               echo '</select></td>';
+               echo '</select>';
             }
+            echo '</td><td>';
             if($this->config->categorycoursefilter) {
-                echo '<td><select name="category" id="filterCategory">';
+                echo '<select name="category" id="filterCategory">';
                 sort($categories);
                 if($currentcategory == 'all') {
                     echo '<option value="all" selected>'.get_string('all', 'block_course_overview_plus').'</option> ';
@@ -295,8 +296,9 @@ class block_course_overview_plus extends block_base {
                            echo '<option value="'.str_replace(' ','_',$cy).'">'.$cy.'</option> ';
                     }
                }
-               echo '</select></td>';
+               echo '</select>';
             }
+            echo '</td><td>';
             if($this->config->teachercoursefilter) {
                 echo '<td><select name="teacher" id="filterTeacher">';
                 asort($teachers);
@@ -312,10 +314,10 @@ class block_course_overview_plus extends block_base {
                            echo '<option value="'.$id.'">'.$t.'</option> ';
                     }
                }
-               echo '</select></td>';
+               echo '</select>';
             }
 
-            echo '</tr></table></form>';
+            echo '</td></tr></table></form>';
         }
     
         if ($managehiddencourses == 0) {
