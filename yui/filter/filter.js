@@ -25,8 +25,8 @@ Filter.prototype = {
     filterYear : function(e) {
         // Prevent the event from refreshing the page
         e.preventDefault();
-var index = Y.get("#filterYear").get('selectedIndex');
-var value = Y.get("#filterYear").get("options").item(index).getAttribute('value');
+var index = Y.one("#filterYear").get('selectedIndex');
+var value = Y.one("#filterYear").get("options").item(index).getAttribute('value');
 if(value=="all") {
  Y.all('div.yeardiv').removeClass('cophidden');
 } else {
@@ -39,8 +39,8 @@ if(value=="all") {
     filterTeacher : function(e) {
         // Prevent the event from refreshing the page
         e.preventDefault();
-var index = Y.get("#filterTeacher").get('selectedIndex');
-var value = Y.get("#filterTeacher").get("options").item(index).getAttribute('value');
+var index = Y.one("#filterTeacher").get('selectedIndex');
+var value = Y.one("#filterTeacher").get("options").item(index).getAttribute('value');
 if(value=="all") {
  Y.all('div.teacherdiv').removeClass('cophidden');
 } else {
@@ -54,8 +54,8 @@ if(value=="all") {
     filterCategory : function(e) {
         // Prevent the event from refreshing the page
         e.preventDefault();
-var index = Y.get("#filterCategory").get('selectedIndex');
-var value = Y.get("#filterCategory").get("options").item(index).getAttribute('value');
+var index = Y.one("#filterCategory").get('selectedIndex');
+var value = Y.one("#filterCategory").get("options").item(index).getAttribute('value');
 if(value=="all") {
  Y.all('div.categorydiv').removeClass('cophidden');
 } else {
