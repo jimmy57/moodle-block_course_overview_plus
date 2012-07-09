@@ -18,8 +18,8 @@ class block_course_overview_plus_edit_form extends block_edit_form {
     protected function specific_definition($mform) {
         // Fields for editing HTML block title and contents.
         $mform->addElement('header', 'configheader', get_string('blocksettings', 'block'));
-        $mform->addElement('checkbox', 'config_categorycoursefilter', get_string('categorycoursefilter', 'block_course_overview_plus'));
-        $mform->addElement('checkbox', 'config_yearcoursefilter', get_string('yearcoursefilter', 'block_course_overview_plus'));
-        $mform->addElement('checkbox', 'config_teachercoursefilter', get_string('teachercoursefilter', 'block_course_overview_plus'));
+        $mform->addElement('advcheckbox', 'config_categorycoursefilter', get_string('categorycoursefilter', 'block_course_overview_plus'));
+        $mform->addElement('advcheckbox', 'config_yearcoursefilter', get_string('yearcoursefilter', 'block_course_overview_plus'));
+        $mform->addElement('advcheckbox', 'config_teachercoursefilter', get_string('teachercoursefilter', 'block_course_overview_plus'));
     }
 }
