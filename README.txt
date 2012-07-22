@@ -23,7 +23,7 @@ To replace the standard course_overview block across your site (admins)
 5. Head to your MyMoodle page and in the configuration set Display on Page Types to My Home Page.
 
 This is the official Moodle method and has a slight side effect in that it will appear on all MyMoodle pages including block configuration screens. 
-An alternative I use is to rename all instances of course_overview_plus to course_overview and overwrite the existing block, but this will have to do
+An alternative I use is to rename all instances of course_overview_plus to course_overview and overwrite the existing block, but this will have to be
 done every time you upgrade Moodle.
 
 

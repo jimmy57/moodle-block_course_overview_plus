@@ -30,5 +30,6 @@ class block_course_overview_plus_edit_form extends block_edit_form {
         $mform->addElement('advcheckbox', 'config_defaultyear', get_string('defaultyear', 'block_course_overview_plus'));
         $mform->disabledIf('config_academicyearstartmonth', 'config_yearcoursefilter'); 
         $mform->disabledIf('config_defaultyear', 'config_yearcoursefilter'); 
+        $mform->addHelpButton('config_defaultyear', 'defaultyearhelp', 'block_course_overview_plus');
     }
 }
