@@ -52,3 +52,4 @@ Release Notes
 2012062501	Forum issue fixed
 2012062600	Specialization method added
 2012070700	Fixed reported bugs
+2012072200	Improved year filter, improved handling when filter selections become redundant

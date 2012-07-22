@@ -17,9 +17,18 @@
 class block_course_overview_plus_edit_form extends block_edit_form {
     protected function specific_definition($mform) {
         // Fields for editing HTML block title and contents.
-        $mform->addElement('header', 'configheader', get_string('blocksettings', 'block'));
+        $mform->addElement('header', 'configheader', get_string('categorycoursefilter', 'block_course_overview_plus'));
         $mform->addElement('advcheckbox', 'config_categorycoursefilter', get_string('categorycoursefilter', 'block_course_overview_plus'));
-        $mform->addElement('advcheckbox', 'config_yearcoursefilter', get_string('yearcoursefilter', 'block_course_overview_plus'));
+        $mform->addElement('header', 'configheader', get_string('teachercoursefilter', 'block_course_overview_plus'));
         $mform->addElement('advcheckbox', 'config_teachercoursefilter', get_string('teachercoursefilter', 'block_course_overview_plus'));
+        $mform->addElement('header', 'configheader', get_string('yearcoursefilter', 'block_course_overview_plus'));
+        $mform->addElement('advcheckbox', 'config_yearcoursefilter', get_string('yearcoursefilter', 'block_course_overview_plus'));
+        for ($i=1; $i<=12; $i++) {
+          $months[$i] = userdate(gmmktime(12,0,0,$i,15,2000), "%B");
+        }
+        $mform->addElement('select', 'config_academicyearstartmonth', get_string('academicyearstart', 'block_course_overview_plus'), $months);
+        $mform->addElement('advcheckbox', 'config_defaultyear', get_string('defaultyear', 'block_course_overview_plus'));
+        $mform->disabledIf('config_academicyearstartmonth', 'config_yearcoursefilter'); 
+        $mform->disabledIf('config_defaultyear', 'config_yearcoursefilter'); 
     }
 }
