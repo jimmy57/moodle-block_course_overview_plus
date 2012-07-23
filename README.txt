@@ -34,6 +34,13 @@ To add the example course filters
 2. Select the configuration button at the top of the Course Overview Plus block.
 3. Tick the checkboxes to display each course filter at the top of the block, you can display more than one at once.
 
+Resetting the year course filter across the site, so that everyone gets newly calculated default year
+-----------------------------------------------------------------------------------------------------
+
+1. Run the following SQL where <prefix> is usually mdl
+
+DELETE FROM <prefix>_user_preferences WHERE name = 'courseoverviewplusselectedyear'
+
 Problems?
 --------
 
