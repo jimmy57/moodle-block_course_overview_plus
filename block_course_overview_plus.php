@@ -252,13 +252,13 @@ class block_course_overview_plus extends block_base {
         if ($this->config->yearcoursefilter && $this->config->defaultyear && $currentyear == 'currentyear') {
           if ($this->config->academicyearstartmonth == '1' && isset($years[date('Y')])) {
              $currentyear = date('Y');
-             set_user_preference('courseoverviewplusselectedyear', $currentyear, $USER->id);
+//             set_user_preference('courseoverviewplusselectedyear', $currentyear, $USER->id);
           } elseif(intval(date('n'))>=intval($this->config->academicyearstartmonth) && isset($years[date('Y').'-'.(date('y')+1)])) {
              $currentyear = date('Y').'-'.(date('y')+1); 
-              set_user_preference('courseoverviewplusselectedyear', $currentyear, $USER->id);
+//              set_user_preference('courseoverviewplusselectedyear', $currentyear, $USER->id);
           } elseif(isset($years[(date('Y')-1).'-'.date('y')])) {
              $currentyear = (date('Y')-1).'-'.date('y');
-              set_user_preference('courseoverviewplusselectedyear', $currentyear, $USER->id);
+  //            set_user_preference('courseoverviewplusselectedyear', $currentyear, $USER->id);
           } else {
              $currentyear = 'all';
              arsort($years);
@@ -268,7 +268,7 @@ class block_course_overview_plus extends block_base {
                      break;
                   }
              }
-             set_user_preference('courseoverviewplusselectedyear', $currentyear, $USER->id);
+    //         set_user_preference('courseoverviewplusselectedyear', $currentyear, $USER->id);
           }
         }
 	if ($this->config->categorycoursefilter || $this->config->yearcoursefilter || $this->config->teachercoursefilter) {
