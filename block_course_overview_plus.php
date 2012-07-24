@@ -284,7 +284,7 @@ class block_course_overview_plus extends block_base {
             if($this->config->teachercoursefilter) {
                 echo get_string('teacher', 'block_course_overview_plus');
             } 
-            echo '</td><td rowspan=2><input type="image" alt="'.get_string('clicktofilter', 'block_course_overview_plus').'" src="'.$OUTPUT->pix_url('i/course_filter').'"/></td></tr><tr><td>';
+            echo '</td><td rowspan=2><input type="image" alt="'.get_string('clicktofilter', 'block_course_overview_plus').'" src="pix/i/course_filter.png"/></td></tr><tr><td>';
             if($this->config->yearcoursefilter) {
                 $selectedavailable = false;
                 echo '<select name="year" id="filterYear">';
@@ -461,18 +461,18 @@ id.'" class="cophidden" title="'.get_string('hidecourse', 'block_course_overview
           if ($c->infohide == 0) {
               echo ' <div style="text-align: right;"><a href="index.php?contractcourseinfo='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" 
 id="contract'.$c->id.'" title="'.get_string('collapsecourseinfo', 'block_course_overview_plus').'">'.
-                     '<img src="'.$OUTPUT->pix_url('i/contract') . '" class="icon" alt="'.get_string('collapsecourseinfo', 'block_course_overview_plus').'" /></a>'.
+                     '<img src="pix/i/contract.gif" class="icon" alt="'.get_string('collapsecourseinfo', 'block_course_overview_plus').'" /></a>'.
                      '<a href="index.php?expandcourseinfo='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" id="expand'.$c->id.'" class="cophidden" 
 title="'.get_string('expandcourseinfo', 'block_course_overview_plus').'">'.
-                     '<img src="'.$OUTPUT->pix_url('i/expand') . '" class="icon" alt="'.get_string('expandcourseinfo', 'block_course_overview_plus').'" 
+                     '<img src="pix/i/expand.gif" class="icon" alt="'.get_string('expandcourseinfo', 'block_course_overview_plus').'" 
 /></a></div>';
           } else {
               echo ' <div style="text-align: right;"><a href="index.php?contractcourseinfo='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" title="'.
 get_string('collapsecourseinfo', 'block_course_overview_plus').'"  id="contract'.$c->id.'" class="cophidden" >'.
-                     '<img src="'.$OUTPUT->pix_url('i/contract') . '" class="icon" alt="'.get_string('collapsecourseinfo', 'block_course_overview_plus').'" /></a>'.
+                     '<img src="pix/i/contract.gif" class="icon" alt="'.get_string('collapsecourseinfo', 'block_course_overview_plus').'" /></a>'.
                      '<a href="index.php?expandcourseinfo='.$c->id.'&amp;managehiddencourses='.$managehiddencourses.'" title="'.get_string('expandcourseinfo', 
 'block_course_overview_plus').'" id="expand'.$c->id.'" >'.
-                     '<img src="'.$OUTPUT->pix_url('i/expand') . '" alt="'.get_string('expandcourseinfo', 'block_course_overview_plus').'" 
+                     '<img src="pix/i/expand.gif" alt="'.get_string('expandcourseinfo', 'block_course_overview_plus').'" 
 class="icon"/></a></div>';
           }
      }
