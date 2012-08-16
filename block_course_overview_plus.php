@@ -123,7 +123,7 @@ class block_course_overview_plus extends block_base {
         $courses_limit = $courses_limit + 1;
     }
 
-    $courses = enrol_get_my_courses('id, shortname, modinfo', 'fullname ASC', $courses_limit);
+    $courses = enrol_get_my_courses('id, shortname, modinfo, sectioncache', 'fullname ASC', $courses_limit);
     $site = get_site();
     $course = $site; //just in case we need the old global $course hack
 
