@@ -21,4 +21,4 @@ $string['academicyearstart'] = 'Month in which the academic year starts';
 $string['defaultyear'] = 'Set the filter to the most recent year by default';
 $string['defaultyearhelp'] = 'Default year';
 $string['defaultyearhelp_help'] = 'If the user has not previously selected a filter for academic years, a filter is chosen for them. The first choice is the current academic year. If the user is not enrolled on any courses in the current academic year, the next choice is any academic year starting or finishing in the current calendar year. After that, the most recent previous academic year is chosen.';
-
+$string['courselimit'] = 'Maximum number of courses to display (may be less if courses are hidden or filtered out)';
