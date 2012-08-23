@@ -114,8 +114,8 @@ class block_course_overview_plus extends block_base {
     // limits the number of courses showing up
     $courses_limit = 21;
     // FIXME: this should be a block setting, rather than a global setting
-    if (isset($CFG->mycoursesperpage)) {
-        $courses_limit = $CFG->mycoursesperpage;
+    if (!empty($this->config->courselimit)) {
+        $courses_limit = $this->config->courselimit;
     }
 
     $morecourses = false;
