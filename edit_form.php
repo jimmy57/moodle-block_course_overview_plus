@@ -16,7 +16,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 class block_course_overview_plus_edit_form extends block_edit_form {
     protected function specific_definition($mform) {
-        // Fields for editing HTML block title and contents.
+        $mform->addElement('text', 'config_courselimit', get_string('courselimit', 'block_course_overview_plus'), array('size' => 5));
+        $mform->setDefault('config_courselimit', 21);
+        $mform->setType('config_courselimit', PARAM_INTEGER);
         $mform->addElement('header', 'configheader', get_string('categorycoursefilter', 'block_course_overview_plus'));
         $mform->addElement('advcheckbox', 'config_categorycoursefilter', get_string('categorycoursefilter', 'block_course_overview_plus'));
         $mform->addElement('header', 'configheader', get_string('teachercoursefilter', 'block_course_overview_plus'));
