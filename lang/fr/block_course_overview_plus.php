@@ -21,3 +21,4 @@ $string['academicyearstart'] = 'Mois de début de l\'année des cours';
 $string['defaultyear'] = 'Régler le filtre sur l\'année la plus récente par défaut';
 $string['defaultyearhelp'] = 'Année par défaut';
 $string['defaultyearhelp_help'] = 'Si l\'utilisateur n\'a pas sélectionné précédemment de filtre pour les années académiques, un filtre est choisi pour eux. Le premier choix est l\'année en cours. Si l\'utilisateur n\'est inscrit à aucun cours de l\'année en cours, le choix suivant est une année scolaire commençant ou se terminant dans l\'année civile en cours. Après cela, la plus récente année scolaire précédente est choisie.';
+$string['courselimit'] = 'Nombre maximum de cours à afficher (peut être moins si les cours sont masqués ou filtrés)';
