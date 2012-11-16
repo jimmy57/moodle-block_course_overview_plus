@@ -533,7 +533,7 @@ class="icon"/></a></div>';
       if($this->config->categorycoursefilter) {
           echo '</div>';
       }
-      if($this->config->teachercoursefilter) {
+      if($this->config->termcoursefilter) {
           echo '</div>';
       }
 
@@ -552,7 +552,7 @@ $this->content->text = implode($content);
 if($this->config->yearcoursefilter) { 
 user_preference_allow_ajax_update('courseoverviewplusselectedyear', PARAM_TEXT);
 }
-if($this->config->teachercoursefilter) {
+if($this->config->termcoursefilter) {
 user_preference_allow_ajax_update('courseoverviewplusselectedterm', PARAM_TEXT);
 }
 if($this->config->categorycoursefilter) {
