@@ -16,8 +16,8 @@ Filter.prototype = {
         var i;
         var nodeFilterYear = Y.one('#filterYear')
         if(nodeFilterYear != null) {nodeFilterYear.on('change', this.filterYear, this);}
-        var nodeFilterTeacher = Y.one('#filterTeacher')
-        if(nodeFilterTeacher != null)  {nodeFilterTeacher.on('change', this.filterTeacher, this);}
+        var nodeFilterTerm = Y.one('#filterTerm')
+        if(nodeFilterTerm != null)  {nodeFilterTerm.on('change', this.filterTerm, this);}
         var nodeFilterCategory = Y.one('#filterCategory')
         if(nodeFilterCategory != null) {nodeFilterCategory.on('change', this.filterCategory, this);}
 
@@ -36,17 +36,17 @@ if(value=="all") {
    // Store the users selection (Uses AJAX to save to the database)
         M.util.set_user_preference('courseoverviewplusselectedyear', value);
     },
-    filterTeacher : function(e) {
+    filterTerm : function(e) {
         // Prevent the event from refreshing the page
         e.preventDefault();
-var index = Y.one("#filterTeacher").get('selectedIndex');
-var value = Y.one("#filterTeacher").get("options").item(index).getAttribute('value');
+var index = Y.one("#filterTerm").get('selectedIndex');
+var value = Y.one("#filterTerm").get("options").item(index).getAttribute('value');
 if(value=="all") {
- Y.all('div.teacherdiv').removeClass('cophidden');
+ Y.all('div.termdiv').removeClass('cophidden');
 } else {
 
- Y.all('div.teacherdiv').addClass('cophidden');
- Y.all('div.copteacher'+value).removeClass('cophidden');
+ Y.all('div.termdiv').addClass('cophidden');
+ Y.all('div.copterm'+value).removeClass('cophidden');
 }
    // Store the users selection (Uses AJAX to save to the database)
       M.util.set_user_preference('courseoverviewplusselectedteacher', value);
