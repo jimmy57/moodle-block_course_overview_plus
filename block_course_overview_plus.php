@@ -27,8 +27,8 @@ class block_course_overview_plus extends block_base {
         if (empty($this->config->categorycoursefilter)) {
             $this->config->categorycoursefilter = false;
         }    
-        if (empty($this->config->teachercoursefilter)) {
-            $this->config->teachercoursefilter = false;
+        if (empty($this->config->termmcoursefilter)) {
+            $this->config->termcoursefilter = false;
         }
         if (empty($this->config->academicyearstartmonth)) {
             $this->config->academicyearstartmonth = 1;
@@ -55,7 +55,7 @@ class block_course_overview_plus extends block_base {
     $managehiddencourses = optional_param('managehiddencourses', 0, PARAM_INT);
     $year                = optional_param('year', '0', PARAM_TEXT);
     $category            = optional_param('category', '0', PARAM_TEXT);
-    $teacher             = optional_param('teacher', 0, PARAM_TEXT);
+    $term                = optional_param('term', 0, PARAM_TEXT);
 
     //need to keep track of latest changes as user preferences are not reliable
     $recenthide = 0;
@@ -99,11 +99,11 @@ class block_course_overview_plus extends block_base {
         $currentcategory = get_user_preferences('courseoverviewplusselectedcategory', 'all');
    }
 
-   if ($teacher != '0') {
-        set_user_preference('courseoverviewplusselectedteacher', $teacher, $USER->id);
-        $currentteacher=$teacher;
+   if ($term != '0') {
+        set_user_preference('courseoverviewplusselectedterm', $term, $USER->id);
+        $currentterm=$term;
     } else {
-        $currentteacher = get_user_preferences('courseoverviewplusselectedteacher', 'all');
+        $currentterm = get_user_preferences('courseoverviewplusselectedterm', 'all');
    }
 
     $this->content = new stdClass();
@@ -189,8 +189,8 @@ class block_course_overview_plus extends block_base {
         if($this->config->categorycoursefilter) {
             $categories = array();
         }
-        if($this->config->teachercoursefilter) {
-            $teachers = array();
+        if($this->config->termcoursefilter) {
+            $terms = array();
         }
 
         foreach ($courses as $c) {
@@ -212,13 +212,22 @@ class block_course_overview_plus extends block_base {
                 $categories[$coursecategory->name] = $coursecategory->name;
                 $c->categoryname = $coursecategory->name;
             }
-            if($this->config->teachercoursefilter) {
-                $context = get_context_instance(CONTEXT_COURSE, $c->id);
-                $courseteachers = get_role_users(3, $context);
-                foreach ($courseteachers as $ct) {
-                    $teachers[$ct->id] = $ct->firstname.' '.$ct->lastname;
+            if($this->config->termcoursefilter) {
+                // $context = get_context_instance(CONTEXT_COURSE, $c->id);
+                // $courseteachers = get_role_users(3, $context);
+                // foreach ($courseteachers as $ct) {
+                //    $teachers[$ct->id] = $ct->firstname.' '.$ct->lastname;
+                // }
+                $termnumber = substr(explode('_', $c->idnumber)[1],5,1);
+                if ($termnumber == '1') { 
+                  $term = 'fall';
+                } else if ($termnumber == '2') {
+                  $term = 'spring';
+                } else {
+                  $term = 'other';
                 }
-                $c->teachers = $courseteachers;
+                $terms[$term] = $term;
+                $c->term = $term;
             }
             
             user_preference_allow_ajax_update('courseoverviewplushide'.$c->id, PARAM_INT);
@@ -275,7 +284,7 @@ class block_course_overview_plus extends block_base {
     //         set_user_preference('courseoverviewplusselectedyear', $currentyear, $USER->id);
           }
         }
-	if ($this->config->categorycoursefilter || $this->config->yearcoursefilter || $this->config->teachercoursefilter) {
+	if ($this->config->categorycoursefilter || $this->config->yearcoursefilter || $this->config->termcoursefilter) {
             echo '<form><table style="background-color:#9ab34e;margin-left:auto; margin-right:auto;border-style:solid;border-width:1px;border-color:#666666"><tr><td>';
             if($this->config->yearcoursefilter) {
                 echo get_string('year', 'block_course_overview_plus');
@@ -285,8 +294,8 @@ class block_course_overview_plus extends block_base {
                 echo get_string('category', 'block_course_overview_plus');
             }
             echo '</td><td>';
-            if($this->config->teachercoursefilter) {
-                echo get_string('teacher', 'block_course_overview_plus');
+            if($this->config->termcoursefilter) {
+                echo get_string('term', 'block_course_overview_plus');
             } 
             echo '</td><td rowspan=2><input type="image" alt="'.get_string('clicktofilter', 'block_course_overview_plus').'" src="'.$CFG->wwwroot.'/blocks/course_overview_plus/pix/i/course_filter.png"/></td></tr><tr><td>';
             if($this->config->yearcoursefilter) {
@@ -349,28 +358,37 @@ class block_course_overview_plus extends block_base {
                }
             }
             echo '</td><td>';
-            if($this->config->teachercoursefilter) {
+            if($this->config->termcoursefilter) {
                 $selectedavailable = false;
-                echo '<select name="teacher" id="filterTeacher">';
-                asort($teachers);
-                if($currentteacher == 'all') {
+                echo '<select name="term" id="filterTerm">';
+                if($currentterm == 'all') {
                     echo '<option value="all" selected>'.get_string('all', 'block_course_overview_plus').'</option> ';
                     $selectedavailable = true;
                 } else {
                     echo '<option value="all">'.get_string('all', 'block_course_overview_plus').'</option> ';
                 }
-                foreach ($teachers as $id=>$t) {
-                    if($currentteacher == $id) {
-                           echo '<option selected value="'.$id.'">'.$t.'</option> ';
-                           $selectedavailable = true;
-                    } else {
-                           echo '<option value="'.$id.'">'.$t.'</option> ';
-                    }
-               }
+                if($currentterm == 'all') {
+                    echo '<option value="all" selected>'.get_string('all', 'block_course_overview_plus').'</option> ';
+                    $selectedavailable = true;
+                } else {
+                    echo '<option value="all">'.get_string('all', 'block_course_overview_plus').'</option> ';
+                }
+
+
+
+             //   foreach ($t as $id=>$teachers) {
+             //       if($currentteacher == $id) {
+             //              echo '<option selected value="'.$id.'">'.$t.'</option> ';
+             //              $selectedavailable = true;
+             //       } else {
+             //              echo '<option value="'.$id.'">'.$t.'</option> ';
+              //      }
+             //  }
+
                echo '</select>';
               if (!$selectedavailable) {
                  $currentteacher = 'all';
-                 set_user_preference('courseoverviewplusselectedteacher', $currentcategory, $USER->id);
+                 set_user_preference('courseoverviewplusselectedteacher', $currentterm, $USER->id);
                }
 
             }
