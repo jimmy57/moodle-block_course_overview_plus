@@ -370,7 +370,7 @@ class block_course_overview_plus extends block_base {
                echo '</select>';
               if (!$selectedavailable) {
                  $currentteacher = 'all';
-                 set_user_preference('courseoverviewplusselectedteacher', $currentcategory, $USER->id);
+                 set_user_preference('courseoverviewplusselectedteacher', $currentteacher, $USER->id);
                }
 
             }
