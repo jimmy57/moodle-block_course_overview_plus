@@ -21,8 +21,8 @@ class block_course_overview_plus_edit_form extends block_edit_form {
         $mform->setType('config_courselimit', PARAM_INTEGER);
         $mform->addElement('header', 'configheader', get_string('categorycoursefilter', 'block_course_overview_plus'));
         $mform->addElement('advcheckbox', 'config_categorycoursefilter', get_string('categorycoursefilter', 'block_course_overview_plus'));
-        $mform->addElement('header', 'configheader', get_string('teachercoursefilter', 'block_course_overview_plus'));
-        $mform->addElement('advcheckbox', 'config_teachercoursefilter', get_string('teachercoursefilter', 'block_course_overview_plus'));
+        $mform->addElement('header', 'configheader', get_string('termcoursefilter', 'block_course_overview_plus'));
+        $mform->addElement('advcheckbox', 'config_termcoursefilter', get_string('termcoursefilter', 'block_course_overview_plus'));
         $mform->addElement('header', 'configheader', get_string('yearcoursefilter', 'block_course_overview_plus'));
         $mform->addElement('advcheckbox', 'config_yearcoursefilter', get_string('yearcoursefilter', 'block_course_overview_plus'));
         for ($i=1; $i<=12; $i++) {
