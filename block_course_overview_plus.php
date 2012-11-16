@@ -218,7 +218,13 @@ class block_course_overview_plus extends block_base {
                 // foreach ($courseteachers as $ct) {
                 //    $teachers[$ct->id] = $ct->firstname.' '.$ct->lastname;
                 // }
-                $termnumber = substr(explode('_', $c->idnumber)[1],5,1);
+                $termnumberarray = explode('_', $c->idnumber);
+                $termnumber = 'other';
+                if (count($termnumberarray) > 1) {
+                  if (strlen($termnumberarray[1]) == 6) {
+                    $termnumber = substr($termnumberarray[1],5);
+                  }
+                }
                 if ($termnumber == '1') { 
                   $term = 'fall';
                 } else if ($termnumber == '2') {
