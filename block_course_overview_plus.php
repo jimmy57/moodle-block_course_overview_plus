@@ -27,7 +27,7 @@ class block_course_overview_plus extends block_base {
         if (empty($this->config->categorycoursefilter)) {
             $this->config->categorycoursefilter = false;
         }    
-        if (empty($this->config->termmcoursefilter)) {
+        if (empty($this->config->termcoursefilter)) {
             $this->config->termcoursefilter = false;
         }
         if (empty($this->config->academicyearstartmonth)) {
