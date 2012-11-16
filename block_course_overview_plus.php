@@ -55,7 +55,7 @@ class block_course_overview_plus extends block_base {
     $managehiddencourses = optional_param('managehiddencourses', 0, PARAM_INT);
     $year                = optional_param('year', '0', PARAM_TEXT);
     $category            = optional_param('category', '0', PARAM_TEXT);
-    $term                = optional_param('term', 0, PARAM_TEXT);
+    $term                = optional_param('term', '0', PARAM_TEXT);
 
     //need to keep track of latest changes as user preferences are not reliable
     $recenthide = 0;
