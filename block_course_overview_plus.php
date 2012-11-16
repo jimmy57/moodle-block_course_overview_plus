@@ -460,7 +460,7 @@ class block_course_overview_plus extends block_base {
              //   } else {
              //        echo ' cophidden">';
              //   }
-             if ($c->term == $currentterm||$currentterm='all')    {
+             if ($c->term == $currentterm||$currentterm=='all')    {
                      echo '<div class="termdiv copterm'.$c->term.'">';
                 } else {
                      echo '<div class="termdiv copterm'.$c->term.' cophidden">';
