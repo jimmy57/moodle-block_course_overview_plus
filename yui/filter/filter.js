@@ -49,7 +49,7 @@ if(value=="all") {
  Y.all('div.copterm'+value).removeClass('cophidden');
 }
    // Store the users selection (Uses AJAX to save to the database)
-      M.util.set_user_preference('courseoverviewplusselectedteacher', value);
+      M.util.set_user_preference('courseoverviewplusselectedterm', value);
     },
     filterCategory : function(e) {
         // Prevent the event from refreshing the page
